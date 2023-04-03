@@ -5,10 +5,13 @@
   "main": "index.js",
   "scripts": {
     "build": "rimraf ./build && tsc",
-    "dev": "npx nodemon",
+    "dev": "nodemon --watch src --ext ts --exec ts-node src/index.ts",
     "start": "node build/index.js",
-    "lint": "npm run eslint",
-    "test": "npm run jest"
+    "lint": "eslint . --ext .ts",
+    "eslint": "eslint",
+    "test": "jest",
+    "jest": "jest",
+    "prettier-format": "prettier --write ."
   },
   "husky": {
     "hooks": {
