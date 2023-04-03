@@ -6,7 +6,7 @@ COPY package*.json ./
 
 RUN yarn
 
-RUN yarn eslint
+RUN yarn lint
 
 RUN yarn test
 
