@@ -6,6 +6,10 @@ COPY package*.json ./
 
 RUN yarn
 
+RUN yarn eslint
+
+RUN yarn test
+
 COPY . .
 
 RUN node_modules/.bin/tsc
