@@ -5,6 +5,21 @@ jobs:
     name: Lint & Run Jest
     runs-on: self-hosted
     steps: 
+      - name: 📦 Install Dependencies 
+        run: | 
+          yarn install
+          yarn
+          yarn add eslint 
+          yarn add jest
+      - name: 🧪 Lint Code 
+        run: yarn eslint 
+      - name: 💉 Test Code
+        run: yarn jest
+      - name: 📦 Build Application
+        run: yarn build
+
+      - name: Docker Setup Buildx
+        uses: docker/setup-buildx-action@v2.5.0
       - name: Check out repository code
         uses: actions/checkout@v3
       - name: Build and push Docker images
@@ -21,15 +36,4 @@ jobs:
           push: true
           tags: manuelschibli/app:latest
           
-      - name: 📦 Install Dependencies 
-        run: | 
-          yarn install
-          yarn
-          yarn add eslint 
-          yarn add jest
-      - name: 🧪 Lint Code 
-        run: yarn eslint 
-      - name: 💉 Test Code
-        run: yarn jest
-      - name: 📦 Build Application
-        run: yarn build
+      
